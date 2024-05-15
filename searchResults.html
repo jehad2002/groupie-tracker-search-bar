@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/stylee.css">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    {{range .}}
+    <div>
+        <h2>{{.A.Name}}</h2>
+        <img src="{{.A.Image}}" alt="{{.A.Name}}">
+        <p>Members: {{range $index, $member := .A.Members}}{{if $index}}, {{end}}{{$member}}{{end}}</p>
+        <p>Creation Date: {{.A.CreationDate}}</p>
+        <p>First Album: {{.A.FirstAlbum}}</p>
+        <p>Locations: {{range $index, $location := .L.Locations}}{{if $index}}, {{end}}{{$location}}{{end}}</p>
+        <p>Dates: {{range $index, $date := .D.Dates}}{{if $index}}, {{end}}{{$date}}{{end}}</p>
+        <p>Relation:</p>
+        <ul>
+            {{range $location, $dates := .R.DatesLocations}}
+            <li><strong>{{$location}}</strong>: {{range $index, $date := $dates}}{{if $index}}, {{end}}{{$date}}{{end}}</li>
+            {{end}}
+        </ul>
+    </div>
+    {{end}}
+</body>
+</html>
