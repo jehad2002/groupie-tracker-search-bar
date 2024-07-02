@@ -200,21 +200,6 @@ func artistPage(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, b)
 }
 
-func returnAllLocations(w http.ResponseWriter, _ *http.Request) {
-	fmt.Println("Endpoint Hit: returnAllLocations")
-	json.NewEncoder(w).Encode(LocationData())
-}
-
-func returnAllDates(w http.ResponseWriter, _ *http.Request) {
-	fmt.Println("Endpoint Hit: returnAllDates")
-	json.NewEncoder(w).Encode(DatesData())
-}
-
-func returnAllRelation(w http.ResponseWriter, _ *http.Request) {
-	fmt.Println("Endpoint Hit: returnAllRelation")
-	json.NewEncoder(w).Encode(RelationData())
-}
-
 // ByName sorts data by artist name.
 type ByName []Data
 
@@ -317,9 +302,6 @@ func HandleRequests() {
 	fmt.Println("Now open a browser and enter: localhost:8080 into the URL")
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/artistInfo", artistPage)
-	http.HandleFunc("/locations", returnAllLocations)
-	http.HandleFunc("/dates", returnAllDates)
-	http.HandleFunc("/relation", returnAllRelation)
 	http.HandleFunc("/search", searchHandler)
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	if err := http.ListenAndServe(":8080", nil); err != nil {
