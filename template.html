@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="css/style.css">
@@ -22,7 +22,49 @@
                         {{if ne .Id 21}}
                         <input type="image" src="{{.Image}}" alt="{{.Name}}">
                         {{else}}
-                        <!-- Placeholder image or empty space for artist 21 -->
+                        <div class="placeholder-image"></div>
+                        {{end}}
+                    </div>
+                    <div class="flip-card-back">
+                        <input type="submit" id="back" value="{{.Name}}">
+                    </div>
+                </div>
+            </div>
+        </form>
+        {{end}}
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Groupie-tracker</title>
+    <h1 id="Title">Welcome to Groupie Tracker!</h1>
+</head>
+<body>
+    <div class="search-container">
+        <form action="/search" method="get">
+            <input type="text" id="search" name="q" placeholder="Search for artists..." list="artists">
+            <datalist id="artists">
+                {{range .}}
+                <option value="{{.Name}}">
+                {{end}}
+            </datalist>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="container">
+        {{range .}}
+        <form action="/artistInfo" method="post">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <input type="hidden" name="ArtistName" value="{{.Name}}" alt="{{.Name}}">
+                        {{if ne .Id 21}}
+                        <input type="image" src="{{.Image}}" alt="{{.Name}}">
+                        {{else}}
                         <div class="placeholder-image"></div>
                         {{end}}
                     </div>

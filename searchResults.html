@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="css/stylee.css">
@@ -22,6 +22,42 @@
             {{end}}
         </ul>
     </div>
+    {{end}}
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    {{if .}}
+    <div class="container">
+        {{range .}}
+        <form action="/artistInfo" method="post">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <input type="hidden" name="ArtistName" value="{{.A.Name}}" alt="{{.A.Name}}">
+                        {{if ne .A.Id 21}}
+                        <input type="image" src="{{.A.Image}}" alt="{{.A.Name}}">
+                        {{else}}
+                        <div class="placeholder-image"></div>
+                        {{end}}
+                    </div>
+                    <div class="flip-card-back">
+                        <input type="submit" id="back" value="{{.A.Name}}">
+                    </div>
+                </div>
+            </div>
+        </form>
+        {{end}}
+    </div>
+    {{else}}
+    <p>No results found</p>
     {{end}}
 </body>
 </html>
