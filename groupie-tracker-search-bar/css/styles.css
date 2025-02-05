@@ -1,0 +1,32 @@
+body {
+    background-color: #f0f0f0;
+    padding: 0;
+}
+.image {
+    background-color: turquoise; 
+    padding: 20px;
+    border-bottom: 1px solid #ccc; 
+}
+.name {
+    background-color: turquoise; 
+    padding: 20px;
+}
+.box {
+    display: flex;
+    justify-content: space-around;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    animation-duration: 3s;
+    animation-name: slidein;
+    background-color: #e0e0e0; 
+    padding: 20px;
+}
+.members,
+.creation,
+.firstAlbum,
+.DatesLocations {
+    background-color: #d9d9d9; 
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px; 
+}
